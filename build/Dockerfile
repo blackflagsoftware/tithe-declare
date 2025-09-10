@@ -14,7 +14,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=builder /build/rest-server ./
-COPY --from=builder /build/web/agenda/production/ ./web
+COPY --from=builder /build/web/production/ ./web
 COPY --from=builder /build/scripts/migrations/ ./migrations
 RUN mkdir -p data
 USER bfs

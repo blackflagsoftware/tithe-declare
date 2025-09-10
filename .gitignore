@@ -1,0 +1,14 @@
+cmd/grpc/grpc
+cmd/grpc/grpc.exec
+cmd/rest/rest
+cmd/rest/rest.exec
+tools/migration/migration
+.vscode
+
+.DS_Store
+
+data/agenda.sql.bak
+data/credentials.json
+data/token.json
+
+.env*

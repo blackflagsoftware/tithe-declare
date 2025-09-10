@@ -1,0 +1,169 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./;protobuf";
+
+message IDIn {
+	int64 Id = 1;
+}
+
+message Result {
+	bool Success = 1;
+	string Error = 2;
+}
+message Role {
+		string Id = 1;
+	string Name = 2;
+	string Description = 3;
+}
+
+message RoleResponse {
+	Role Role = 1;
+	Result result = 2;
+}
+
+message RoleRepeatResponse {
+	repeated Role Role = 1;
+	Result result = 2;
+}
+
+message RoleIDIn {
+		string Id = 1;
+}
+
+service RoleService {
+	rpc GetRole(RoleIDIn) returns (RoleResponse);
+	rpc SearchRole(Role) returns (RoleRepeatResponse);
+	rpc CreateRole(Role) returns (RoleResponse);
+	rpc UpdateRole(Role) returns (Result);
+	rpc DeleteRole(RoleIDIn) returns (Result);
+}
+message Login {
+		string Id = 1;
+	string EmailAddr = 2;
+	string FirstName = 3;
+	string LastName = 4;
+	string Pwd = 5;
+	bool Active = 6;
+	bool SetPwd = 7;
+	string CreatedAt = 8;
+	string UpdatedAt = 9;
+}
+
+message LoginResponse {
+	Login Login = 1;
+	Result result = 2;
+}
+
+message LoginRepeatResponse {
+	repeated Login Login = 1;
+	Result result = 2;
+}
+
+message LoginIDIn {
+		string Id = 1;
+}
+
+service LoginService {
+	rpc GetLogin(LoginIDIn) returns (LoginResponse);
+	rpc SearchLogin(Login) returns (LoginRepeatResponse);
+	rpc CreateLogin(Login) returns (LoginResponse);
+	rpc UpdateLogin(Login) returns (Result);
+	rpc DeleteLogin(LoginIDIn) returns (Result);
+}
+message LoginRole {
+	string LoginId = 1;
+	string RoleId = 2;
+}
+
+message LoginRoleUpdate {
+	string LoginId = 1;
+	repeated string RoleIds = 2;
+}
+
+message LoginRoleResponse {
+	LoginRole LoginRole = 1;
+	Result result = 2;
+}
+
+message LoginRoleUpdateResponse {
+	LoginRoleUpdate LoginRoleUpdate = 1;
+	Result result = 2;
+}
+
+message LoginRoleRepeatResponse {
+	repeated LoginRole LoginRole = 1;
+	Result result = 2;
+}
+
+message LoginRoleIDIn {
+	string LoginId = 1;
+	string RoleId = 2;
+}
+
+service LoginRoleService {
+	rpc GetLoginRole(LoginRoleIDIn) returns (LoginRoleResponse);
+	rpc SearchLoginRole(LoginRole) returns (LoginRoleRepeatResponse);
+	rpc CreateLoginRole(LoginRole) returns (LoginRoleResponse);
+	rpc BulkLoginRole(LoginRoleUpdate) returns (LoginRoleUpdateResponse);
+	rpc UpdateLoginRole(LoginRole) returns (Result);
+	rpc DeleteLoginRole(LoginRoleIDIn) returns (Result);
+}
+message TdDate {
+		int64 Id = 1;
+	string DateValue = 2;
+	string Hold = 3;
+	string Confirm = 4;
+	string Name = 5;
+	string Phone = 6;
+	string Email = 7;
+}
+
+message TdDateResponse {
+	TdDate TdDate = 1;
+	Result result = 2;
+}
+
+message TdDateRepeatResponse {
+	repeated TdDate TdDate = 1;
+	Result result = 2;
+}
+
+message TdDateIDIn {
+		int64 Id = 1;
+}
+
+service TdDateService {
+	rpc GetTdDate(TdDateIDIn) returns (TdDateResponse);
+	rpc SearchTdDate(TdDate) returns (TdDateRepeatResponse);
+	rpc CreateTdDate(TdDate) returns (TdDateResponse);
+	rpc UpdateTdDate(TdDate) returns (Result);
+	rpc DeleteTdDate(TdDateIDIn) returns (Result);
+}
+message EmailReminder {
+		int64 Id = 1;
+	string Email = 2;
+}
+
+message EmailReminderResponse {
+	EmailReminder EmailReminder = 1;
+	Result result = 2;
+}
+
+message EmailReminderRepeatResponse {
+	repeated EmailReminder EmailReminder = 1;
+	Result result = 2;
+}
+
+message EmailReminderIDIn {
+		int64 Id = 1;
+}
+
+service EmailReminderService {
+	rpc GetEmailReminder(EmailReminderIDIn) returns (EmailReminderResponse);
+	rpc SearchEmailReminder(EmailReminder) returns (EmailReminderRepeatResponse);
+	rpc CreateEmailReminder(EmailReminder) returns (EmailReminderResponse);
+	rpc UpdateEmailReminder(EmailReminder) returns (Result);
+	rpc DeleteEmailReminder(EmailReminderIDIn) returns (Result);
+}

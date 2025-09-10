@@ -1,0 +1,24 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "AUTH_SERVER_API_URL=https://localhost nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "axios": "^1.7.2",
+    "clipboard": "^2.0.11",
+    "nuxt": "^3.12.1",
+    "nuxt-security": "^2.0.0-rc.9",
+    "vue": "^3.4.27",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.2"
+  }
+}

@@ -1,0 +1,31 @@
+{
+    "message": "This is used for forge program for convenience",
+    "app_name": "tithe-declare",
+    "full_path": "/Users/ericsmith/Programming/go/src/github.com/blackflagsoftware/tithe-declare",
+    "project_path": "github.com/blackflagsoftware/tithe-declare",
+    "storage": 0,
+    "sql_engine": 6,
+    "project_path_encoded": "github.com\\/blackflagsoftware\\/tithe-declare",
+    "use_orm": false,
+    "tag_format": "snakeCase",
+    "known_aliases": [
+        "reg",
+        "rol",
+        "aut",
+        "au",
+        "ar",
+        "log",
+        "lo",
+        "lr",
+        "aa",
+        "ac",
+        "td_",
+        "ema"
+    ],
+    "modules": [
+        "sup",
+        "sup",
+        "auth"
+    ],
+    "loaded_config": false
+}

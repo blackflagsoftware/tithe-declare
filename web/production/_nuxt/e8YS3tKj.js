@@ -1,0 +1,1 @@
+function a(e){return{id:"",first_name:"",last_name:"",email_address:"",roles:[],roles_selected:e.map(r=>!1)}}function n(){return{id:"",name:"",description:""}}function s(e){return{raw_path:"",roles:[],roles_selected:e.map(r=>!1)}}export{a as B,n as a,s as b};

@@ -101,8 +101,7 @@ func (m *DomainEmailReminderV1) Delete(ctx context.Context, ema *EmailReminder) 
 
 func (m *DomainEmailReminderV1) SendEmail(ctx context.Context) error {
 	now := time.Now().UTC()
-	// if now.Weekday() == time.Friday && now.Hour() == 23 && now.Minute() == 0 {
-	if now.Weekday() == time.Wednesday && now.Hour() == 0 && now.Minute() == 15 {
+	if now.Weekday() == time.Friday && now.Hour() == 23 && now.Minute() == 0 {
 		logging.Default.Println("It's Friday at 11:00 PM UTC, sending email reminders...")
 		sql := tddate.InitSQLV1()
 		tdDomain := tddate.NewDomainTdDateV1(sql)

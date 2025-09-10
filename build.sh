@@ -11,4 +11,4 @@ is_container=$(docker ps -a | grep tithedeclare | wc -l | xargs)
 if [ "$is_running" == "1" ]; then docker stop tithedeclare; fi 
 if [ "$is_container" == "1" ]; then docker rm tithedeclare; fi
 
-docker run -d --name=agenda -v /home/ubuntu/data:/app/data -p 12672:12580 --env-file ./env_vars tithedeclare:latest
+docker run -d --name=tithedeclare -v /home/ubuntu/data:/app/data -p 12672:12580 --env-file ./env_vars tithedeclare:latest

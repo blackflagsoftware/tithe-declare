@@ -71,7 +71,10 @@ func main() {
 
 	// set all non-endpoints here
 	e.Static("/", config.Srv.DocumentDir)
-	fmt.Println("serving static files from: ", config.Srv.DocumentDir)
+	indexFile := config.Srv.DocumentDir + "/index.html"
+	e.GET("/", func(c echo.Context) error {
+		return c.File(indexFile)
+	})
 	e.HEAD("/status", ServerStatus) // for traditional server check
 	e.GET("/liveness", Liveness)    // for k8s liveness
 

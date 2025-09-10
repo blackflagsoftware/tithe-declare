@@ -70,7 +70,8 @@ func main() {
 	}
 
 	// set all non-endpoints here
-	e.GET("/", Index)
+	e.Static("/", config.Srv.DocumentDir)
+	fmt.Println("serving static files from: ", config.Srv.DocumentDir)
 	e.HEAD("/status", ServerStatus) // for traditional server check
 	e.GET("/liveness", Liveness)    // for k8s liveness
 

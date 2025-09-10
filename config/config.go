@@ -24,6 +24,7 @@ type (
 		LogPath       string
 		LogType       *os.File
 		EnableMetrics bool
+		DocumentDir   string
 	}
 
 	Migration struct {
@@ -108,6 +109,7 @@ func loadEnvVars() {
 	Srv.Env = GetEnvOrDefault("TITHE_DECLARE_ENV", "dev")
 	Srv.LogPath = GetEnvOrDefault("TITHE_DECLARE_LOG_PATH", fmt.Sprintf("/tmp/%s.out", Srv.AppName))
 	Srv.EnableMetrics = GetEnvOrDefaultBool("TITHE_DECLARE_ENABLE_METRICS", true)
+	Srv.DocumentDir = GetEnvOrDefault("TITHE_DECLARE_DOCUMENT_DIR", path.Join(Srv.ExecDir, "..", "..", "web", ".output", "public"))
 	Mig.Enable = GetEnvOrDefaultBool("TITHE_DECLARE_MIGRATION_ENABLED", false)
 	Mig.Dir = GetEnvOrDefault("TITHE_DECLARE_MIGRATION_PATH", "")
 	Mig.SkipInit = GetEnvOrDefaultBool("TITHE_DECLARE_MIGRATION_SKIP_INIT", false)

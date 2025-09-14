@@ -205,8 +205,8 @@ onMounted(() => {
 </script>
 <template>
 	<div class="flex flex-col items-center h-full">
-		<h1 class="text-4xl font-bold mb-4 text-black dark:text-white">River Ridge 11th Ward Tithing Declaration Sign-up</h1>
-		<div class="flex flex-row space-x-8">
+		<h1 class="text-4xl font-bold mb-4 text-black dark:text-white text-center">River Ridge 11th Ward Tithing Declaration Sign-up</h1>
+		<div class="flex flex-row flex-wrap justify-center gap-4">
 			<div class="flex flex-col">
 				<label for="date" class="mb-2 text-black dark:text-white">Date:</label>
 				<select id="date" class="border border-gray-300 rounded p-2 text-gray-800" v-model="daySelected" @change="onDayChange">

@@ -88,7 +88,9 @@ function onConfirmClick() {
 function dateFormat(d: string) {
 	// change the format of the date from 2024-08-30 to August 30, 2024
 	const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-	return new Date(d).toLocaleDateString(undefined, options);
+	const date = new Date(d);
+	date.setUTCHours(12); 
+	return date.toLocaleDateString(undefined, options);
 }
 
 const disabledTime = computed(() => {

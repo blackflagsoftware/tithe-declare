@@ -1,0 +1,1 @@
+import{W as o,n as r}from"./YOFnOudf.js";const i=()=>{const e=r();return o.create({baseURL:e.public.apiURL,onResponseError({request:a,response:t,options:c}){console.error("[fetch error]",t.status,t.statusText,t._data)}})};export{i as a};

@@ -34,6 +34,20 @@ func (m *MockEmailer) EXPECT() *MockEmailerMockRecorder {
 	return m.recorder
 }
 
+// SendIndividualReminder mocks base method.
+func (m *MockEmailer) SendIndividualReminder(arg0 context.Context, arg1 []string, arg2 string) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "SendIndividualReminder", arg0, arg1, arg2)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// SendIndividualReminder indicates an expected call of SendIndividualReminder.
+func (mr *MockEmailerMockRecorder) SendIndividualReminder(arg0, arg1, arg2 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SendIndividualReminder", reflect.TypeOf((*MockEmailer)(nil).SendIndividualReminder), arg0, arg1, arg2)
+}
+
 // SendReminder mocks base method.
 func (m *MockEmailer) SendReminder(arg0 context.Context, arg1 []string, arg2 string) error {
 	m.ctrl.T.Helper()

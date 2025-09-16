@@ -14,6 +14,7 @@ type (
 	Emailer interface {
 		SendReset(context.Context, string, string) error
 		SendReminder(context.Context, []string, string) error
+		SendIndividualReminder(context.Context, []string, string) error
 	}
 
 	Email struct{}
@@ -53,6 +54,22 @@ func (e Email) SendReminder(ctx context.Context, toEmail []string, body string) 
 	msg := []byte(fmt.Sprintf("To: %s\r\nSubject: Upcoming Tithing Declarations\r\n\r\n%s\r\n", toEmail, body))
 	if err := smtp.SendMail(fmt.Sprintf("%s:%d", host, port), auth, from, to, msg); err != nil {
 		logging.Default.Println("unable to send email for SendReminder:", err)
+		return err
+	}
+	return nil
+}
+
+func (e Email) SendIndividualReminder(ctx context.Context, toEmail []string, body string) error {
+	from := config.E.From
+	pwd := config.E.Pwd
+	host := config.E.Host
+	port := config.E.GetEmailPort()
+
+	auth := smtp.PlainAuth("", from, pwd, host)
+	to := toEmail
+	msg := []byte(fmt.Sprintf("To: %s\r\nSubject: Tithing Declaration Reminder\r\n\r\n%s\r\n", toEmail, body))
+	if err := smtp.SendMail(fmt.Sprintf("%s:%d", host, port), auth, from, to, msg); err != nil {
+		logging.Default.Println("unable to send email for SendIndividualReminder:", err)
 		return err
 	}
 	return nil

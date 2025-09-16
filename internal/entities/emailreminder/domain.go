@@ -129,9 +129,11 @@ func (m *DomainEmailReminderV1) SendEmail(ctx context.Context) error {
 		}
 		emailBody := "The following upcoming declaration dates have been scheduled:\n\n"
 		for _, td := range tdDates {
+			individualBody := "This is a reminder that you have an upcoming tithing declaration date scheduled for:\n\n"
 			emailBody += "- "
 			if td.DateValue.Valid {
 				emailBody += td.DateValue.Time.Format("01/02/2006")
+				individualBody += td.DateValue.Time.Format("Monday, January 2, 2006")
 			} else {
 				emailBody += "No Date"
 			}
@@ -143,6 +145,11 @@ func (m *DomainEmailReminderV1) SendEmail(ctx context.Context) error {
 			}
 			if td.Email.Valid {
 				emailBody += " (Email: " + td.Email.String + ")"
+				if td.Email.String != "" {
+					go func(emailAddr string, body string) {
+						m.emailer.SendIndividualReminder(ctx, []string{emailAddr}, body)
+					}(td.Email.String, individualBody)
+				}
 			}
 			emailBody += "\n"
 		}
